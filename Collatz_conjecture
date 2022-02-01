@@ -1,0 +1,40 @@
+/*Author: Alex Muncer
+* Date: 12/10/2021
+* takes an Int and divides by 2 if even or multiplies by 3 and + 1 if odd, until it reaches 1.
+* parameter "n" is the starting Integer
+ * return 1 if n is valid, else -1
+ * E.g., game(1 : Int): = 1
+ *       game(0 : Int): = -1
+ *       game(-3 : Int): = -1
+ *       game(125 : Int): = 1
+*        game(Int.MAX_VALUE) = 1
+ */
+
+
+
+fun game(n: Int): Int{
+    if (n <= 0) { // if negative or 0 return error code -1
+        return -1
+    }
+    if (n = 1) { // if 1 return 1
+        return 1
+    }
+    var currentvalue: Int = n // value that the game analizes
+    while (currentvalue != 1) { // if the current value ins't 1 enter loop. or return value if it is 1
+        if (currentvalue % 2 == 0) { // if current value is diviable by 2 (even) do following dondition
+            currentvalue = currentvalue / 2 // divide current value by 2
+        } else {
+            currentvalue = (currentvalue * 3) + 1 // if not even multiply current value by 3 and then add 1
+        }
+    }
+    return currentvalue
+}
+
+game(1)
+game(Int.MAX_VALUE)
+game(0)
+
+kotlin.test.assertEquals(1, game(1))
+kotlin.test.assertEquals(-1, game(0))
+kotlin.test.assertEquals(1, game(Int.MAX_VALUE))
+kotlin.test.assertEquals(-1, game(Int.MIN_VALUE))
